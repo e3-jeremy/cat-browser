@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-show="loaded && !error" :style="'margin: 0 auto; max-width: '  + catDetails.width + 'px'">
-            <el-card :body-style="{ padding: '0px' }">
+            <el-card class="cat-single-wrap" :body-style="{ padding: '0px' }">
                 <el-header>
                     <el-button class="mt-2" type="primary" @click="back">BACK</el-button>
                 </el-header>
@@ -75,5 +75,11 @@ img {
 }
 .text-bold {
     font-weight: bold;
+}
+.cat-single-wrap {
+    background-image: url('/images/paw.png');
+    background-repeat: no-repeat;
+    background-size: 220px auto;
+    background-position: center 40px;
 }
 </style>
