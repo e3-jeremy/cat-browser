@@ -13,12 +13,9 @@ const state = {
 }
 
 const getters = {
-    showLoadMore: state => {
-        let show = (state.count > (state.page * state.limit));
-        return show
-    },
-    emptyList: state => !!_.isEmpty(state.all),
-    requestStatus: state => state.status,
+    showLoadMore: state => state.count > (state.page * state.limit),
+    showQoute: state => !!_.isEmpty(state.all) && state.status != 'loading',
+    status: state => state.status,
     breedId: state => state.breed_id,
 }
 

@@ -4,7 +4,7 @@
         <el-row>
             <el-col class="col-lg-3 col-md-4 col-sm-6 col-12 mb-3" v-for="(cat, index) in cats" :key="index">
                 <el-card :body-style="{ padding: '0px' }">
-                    <div class="cat-image-item" :style="'background-image:  url(' + cat.url + '), url(/images/paw.png);'">
+                    <div class="cat-image-item" :style="'background-image: url(' + cat.url + '), url(/images/paw.png);'">
                     </div>
                     <div class="bottom clearfix px-4 text-center">
                         <router-link :to="'/' + cat.id">
@@ -37,11 +37,11 @@ export default {
         }),
         ...mapGetters('CAT', [
             'showLoadMore',
-            'requestStatus'
+            'status'
         ])
     },
     watch: {
-      requestStatus: function (status) {
+      status: function (status) {
           // Manipulate the load more button
         if (status == 'loading') {
             this.loadText = 'Loading';
@@ -69,5 +69,6 @@ export default {
     background-position: center;
     background-size: cover;
     position: relative;
+    // background-blend-mode: saturation;
 }
 </style>

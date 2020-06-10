@@ -17,8 +17,13 @@
             </el-card>
         </div>
         <loader :loading="!loaded"/>
-        <Page404 v-show="(error == 404 || error == 400) && loaded"/>
-        <Page500 v-show="error === 500 && loaded"/>
+        <Page404 v-show="(error == 404 || error == 400) && loaded" :loading="false"/>
+        <Page500 v-show="error === 500 && loaded">
+            <div class="col-md-12 text-center mt-4">
+              <h1>The API server is not responding.</h1>
+              <h5>Click <router-link to="/">here</router-link> to go back or contact our support to report this.</h5>
+            </div>
+        </Page500>
     </div>
 </template>
 
@@ -54,7 +59,10 @@ export default {
         })
         .catch(error => {
             // This is tio hide the spinner
-            self.loaded = true;
+            // Delay to make spinner standout
+            setTimeout(function () {
+                self.loaded = true;
+            }, 3000);
 
             if (!error.response) {
                 return self.error = 500;
